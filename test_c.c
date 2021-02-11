@@ -1,49 +1,50 @@
-// C program for DDA line generation 
-#include<stdio.h> 
-#include<graphics.h> 
+#include <stdio.h>
+#include<stdlib.h>
+void swap(int *x,int *y)
+{
+ int temp=*x;
+ *x=*y;
+ *y=temp;
+}
+int partition(int A[],int l,int h)
+{
+ int pivot=A[l];
+ int i=l,j=h;
 
-//Function for finding absolute value 
-int abs (int n) 
-{ 
-	return ( (n>0) ? n : ( n * (-1))); 
-} 
+ do
+ {
+ do{i++;}while(A[i]<=pivot);
+ do{j--;}while(A[j]>pivot);
 
-//DDA Function for line generation 
-void DDA(int X0, int Y0, int X1, int Y1) 
-{ 
-	// calculate dx & dy 
-	int dx = X1 - X0; 
-	int dy = Y1 - Y0; 
+ if(i<j)swap(&A[i],&A[j]);
+ }while(i<j);
 
-	// calculate steps required for generating pixels 
-	int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy); 
+ swap(&A[l],&A[j]);
+ return j;
+}
+void QuickSort(int A[],int l,int h)
+{
+ int j;
 
-	// calculate increment in x & y for each steps 
-	float Xinc = dx / (float) steps; 
-	float Yinc = dy / (float) steps; 
+ if(l<h)
+ {
+ j=partition(A,l,h);
+ QuickSort(A,l,j);
+ QuickSort(A,j+1,h);
+ }
+}
+int main()
+{
+   freopen("D:/vscode/io/input.txt", "r", stdin);
+   freopen("D:/vscode/io/output.txt", "w", stdout);
 
-	// Put pixel for each step 
-	float X = X0; 
-	float Y = Y0; 
-	for (int i = 0; i <= steps; i++) 
-	{ 
-		putpixel (X,Y,RED); // put pixel at (X,Y) 
-		X += Xinc;		 // increment in x at each step 
-		Y += Yinc;		 // increment in y at each step 
-		delay(100);		 // for visualization of line- 
-							// generation step by step 
-	} 
-} 
+ int A[]={11,13,7,12,16,9,24,5,10,3},n=10,i;
 
-// Driver program 
-int main() 
-{ 
-	int gd = DETECT, gm; 
+ QuickSort(A,0,n);
 
-	// Initialize graphics function 
-	initgraph (&gd, &gm, ""); 
+ for(i=0;i<10;i++)
+ printf("%d ",A[i]);
+ printf("\n");
 
-	int X0 = 2, Y0 = 2, X1 = 14, Y1 = 16; 
-	DDA(2, 2, 14, 16); 
-	return 0; 
-} 
+ return 0;
+}

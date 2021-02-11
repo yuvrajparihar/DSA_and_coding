@@ -1,9 +1,9 @@
 import sys 
 # For getting input from input.txt file 
-sys.stdin = open('D:/OneDrive/vscode/io/input.txt', 'r')  
+sys.stdin = open('D:/vscode/io/input.txt', 'r')  
   
 # Printing the Output to output.txt file 
-sys.stdout = open('D:/OneDrive/vscode/io/output.txt', 'w') 
+sys.stdout = open('D:/vscode/io/output.txt', 'w') 
 
 
 def aStarAlgo(start_node, stop_node):

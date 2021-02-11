@@ -159,14 +159,42 @@ else
 //     // return head of reversed list
 // }
 
+node* removeDuplicates( node *head) 
+{      
+  
+    
+    int a[100000]={0}; 
+    node* temp;  node *p;
+    temp= head; p= temp->next;
+ 
+    while(p!=NULL)
+    {   
+        a[temp->data]= temp->data;
+        if(a[p->data]==p->data)
+        {
+            temp->next= p->next;
+            p->next= NULL;
+            p= temp->next;
+        }
+        else
+        {
+            temp= temp->next;
+            p= p->next;
+        }
+    }
+    
+    return head;
+}
+
 int main()
 {
   freopen("D:/vscode/io/input.txt", "r", stdin);
   freopen("D:/vscode/io/output.txt", "w", stdout);
-  int arr[] = {2, 1, 3, 4, 6};
-  create(arr, 5);
-  // display(head);
-  recursiveDisplay(head);
+  int arr[] = {3,4,5,5,3,6};
+  create(arr, 6);
+  // removeDuplicates(head);
+  display(removeDuplicates(head));
+  // recursiveDisplay(head);
   // cout << endl
   //      << count(head);
   // cout << endl
@@ -175,11 +203,11 @@ int main()
   //      << max(head);
   // cout << endl
   //      << search(head, 4)->data;
-  insert(2,8);
-  cout<<endl;
-  display(head);
-  cout<<endl<<deleteNode(5);
-   cout<<endl;
-  display(head);
+  // insert(2,8);
+  // cout<<endl;
+  // display(head);
+  // cout<<endl<<deleteNode(5);
+  //  cout<<endl;
+  // display(head);
   return 0;
 }

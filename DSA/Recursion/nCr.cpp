@@ -15,6 +15,6 @@ int C(int n, int r)
 
 int main()
 {
-    cout << C(3, 3);
+    cout << C(3, 2);
     return 0;
 }
