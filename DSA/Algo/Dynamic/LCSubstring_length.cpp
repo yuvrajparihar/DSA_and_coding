@@ -9,20 +9,19 @@ using namespace std;
 typedef vector<int> vi;
 typedef vector<ll> vl;
 int dp[100][100];
-int LCS(string x, string y, int n, int m)
+int LCS(string x, string y, int n, int m,int ans)
 {
-
     if (n == 0 || m == 0)
-        return 0;
+        return ans;
     if (x[n - 1] == y[m - 1])
-        return 1 + LCS(x, y, n - 1, m - 1);
+        return LCS(x, y, n - 1, m - 1,ans+1);
     else
     {
-        return max(LCS(x, y, n - 1, m), LCS(x, y, n, m - 1));
+        return max(max(LCS(x, y, n - 1, m,0), LCS(x, y, n, m - 1,0)),ans);
     }
 }
 
-int memoLCS(string x, string y, int n, int m)
+int memoLCS(string x, string y, int n, int m,int ans)
 {
 
     if (n == 0 || m == 0)
@@ -30,26 +29,30 @@ int memoLCS(string x, string y, int n, int m)
     if (dp[n][m] != -1)
         return dp[n][m];
     if (x[n - 1] == y[m - 1])
-        return dp[n][m] = 1 + memoLCS(x, y, n - 1, m - 1);
+        return dp[n][m] = memoLCS(x, y, n - 1, m - 1,ans+1);
     else
     {
-        return dp[n][m] = max(memoLCS(x, y, n - 1, m), memoLCS(x, y, n, m - 1));
+        return dp[n][m] = max(max(LCS(x, y, n - 1, m,0), LCS(x, y, n, m - 1,0)),ans);
     }
 }
 int tabLCS(string x, string y, int n, int m)
 {
+    int maxi=0;
 
     for (int i = 1; i <= n; i++)
         for (int j = 1; j <= m; j++)
         {
             if (x[i - 1] == y[j - 1])
                 dp[i][j] = 1 + dp[i - 1][j - 1];
+                if( dp[i][j]>maxi)
+                maxi= dp[i][j];
+
             else
             {
-                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+                dp[i][j] = 0;
             }
         }
-    return dp[n][m];
+    return maxi;
 }
 
 
@@ -61,10 +64,10 @@ int main()
 #endif
     ios_base::sync_with_stdio(false), cin.tie(NULL);
 
-    string x = "abcdfh", y = "abedghr";
-    // string x = "abcdfh", y = "adr";
+    // string x = "abcdfh", y = "abedghr";
+    // string x = "abcdfh", y = "xyzrh";
 
-    //    string x="a",y="a";
+       string x="a",y="b";
 
     int n = x.length();
     int m = y.length();
@@ -72,7 +75,7 @@ int main()
     // int **dp = new int *[n + 1];
     // for (int i = 0; i <= n; i++)
     //     dp[i] = new int[m + 1];
-    cout << LCS(x, y, n, m) << endl;
+    cout << LCS(x, y, n, m,0) << endl;
 
     // memset(dp, -1, sizeof(dp));
     // cout << memoLCS(x, y, n, m) << endl;
@@ -83,13 +86,13 @@ int main()
         dp[i][0] = 0;
     cout << tabLCS(x, y, n, m) << endl;
     
-    for (int i = 0; i <= n; i++)
-    {
-    	for (int j = 0; j <= m; j++){
-        		cout<<dp[i][j]<<" ";
-    }
-    cout<<endl;
-    }
+    // for (int i = 0; i <= n; i++)
+    // {
+    // 	for (int j = 0; j <= m; j++){
+    //     		cout<<dp[i][j]<<" ";
+    // }
+    // cout<<endl;
+    // }
 
     return 0;
 }
