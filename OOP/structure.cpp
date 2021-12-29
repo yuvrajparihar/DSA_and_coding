@@ -1,16 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class A {
-    public:
-    int a=4;
-};
+
 struct member
-{   private:
+{  
+    // private:
     int data=5;
-    void fun(){
-        cout<<data;
+    member(int d){
+        data= d;
     }
+    
 };
 struct B: member
 {
@@ -26,14 +25,11 @@ void func(int *data){
 int main(){
     freopen("D:/vscode/io/input.txt", "r", stdin);
     freopen("D:/vscode/io/output.txt", "w", stdout);
-  A obj;
-  cout<<obj.a<<endl;
-  B m;
-  m.fun();
-//   int data[]={1,2};
-//   func(data);
-//   cout<<data[1]<<endl;
-  
+ 
+//   B m;
+//   m.fun();
+  member m(10);
+  cout<<m.data;
 return 0;
 }
 

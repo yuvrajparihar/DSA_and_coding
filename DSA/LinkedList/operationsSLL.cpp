@@ -8,6 +8,52 @@ public:
   node *next;
 };
 node *head = NULL;
+void display(node *p)
+{
+  while (p != NULL)
+  {
+    cout << p->data << " ";
+    p = p->next;
+  }
+}
+void fun(node *head)
+{
+  node *temp = head;
+  int sz = 0;
+  while (temp)
+  {
+    sz++;
+    temp = temp->next;
+  }
+  int arr[sz];
+  int j = 0;
+  temp = head;
+  while (temp)
+  {
+    arr[j++] = temp->data;
+    temp = temp->next;
+  }
+  temp = head;
+  j = sz / 2;
+  j--;
+  while (j)
+  {
+    temp->data = arr[j--];
+    temp = temp->next;
+  }
+  int x = sz / 2;
+  if (sz % 2 == 1)
+  {
+    temp = temp->next;
+    x++;
+  }
+  for (j = sz - 1; j > x && temp; j--)
+  {
+    temp->data = arr[j];
+    temp = temp->next;
+  }
+  display(head);
+}
 void create(int a[], int n)
 {
   node *p, *temp;
@@ -26,14 +72,6 @@ void create(int a[], int n)
   }
 }
 
-void display(node *p)
-{
-  while (p != NULL)
-  {
-    cout << p->data << " ";
-    p = p->next;
-  }
-}
 void recursiveDisplay(node *p)
 {
   if (p != NULL)
@@ -115,36 +153,39 @@ void insert(int pos, int x)
     }
   }
 }
-int deleteNode(int pos){
-if(pos<1||pos>count(head)){
-  return -1;
-}
-else
-{   node *p=head;
-   if (pos==1)
-   {
-    head=p->next;
-    delete p;
-    return 0; 
-   }
-   else{
-     node *q=NULL;
-     for(int i=0;i<pos-1;i++){
-         q=p;
-         p=p->next;
-     }
-     q->next=p->next;
-     
-     delete p;
-     return 1;
-   }
+int deleteNode(int pos)
+{
+  if (pos < 1 || pos > count(head))
+  {
+    return -1;
+  }
+  else
+  {
+    node *p = head;
+    if (pos == 1)
+    {
+      head = p->next;
+      delete p;
+      return 0;
+    }
+    else
+    {
+      node *q = NULL;
+      for (int i = 0; i < pos - 1; i++)
+      {
+        q = p;
+        p = p->next;
+      }
+      q->next = p->next;
 
-}
-
+      delete p;
+      return 1;
+    }
+  }
 }
 // struct node* reverseList(struct node *head)
 // {
-    
+
 //     struct Node *p,*temp;
 //     p=head->next;
 //     head->next=NULL;
@@ -153,47 +194,48 @@ else
 //         p->next=head;
 //         head=p;
 //         p=temp;
-        
+
 //     }
 //     return head;
 //     // return head of reversed list
 // }
 
-node* removeDuplicates( node *head) 
-{      
-  
-    
-    int a[100000]={0}; 
-    node* temp;  node *p;
-    temp= head; p= temp->next;
- 
-    while(p!=NULL)
-    {   
-        a[temp->data]= temp->data;
-        if(a[p->data]==p->data)
-        {
-            temp->next= p->next;
-            p->next= NULL;
-            p= temp->next;
-        }
-        else
-        {
-            temp= temp->next;
-            p= p->next;
-        }
+node *removeDuplicates(node *head)
+{
+
+  int a[100000] = {0};
+  node *temp;
+  node *p;
+  temp = head;
+  p = temp->next;
+
+  while (p != NULL)
+  {
+    a[temp->data] = temp->data;
+    if (a[p->data] == p->data)
+    {
+      temp->next = p->next;
+      p->next = NULL;
+      p = temp->next;
     }
-    
-    return head;
+    else
+    {
+      temp = temp->next;
+      p = p->next;
+    }
+  }
+
+  return head;
 }
 
 int main()
 {
   freopen("D:/vscode/io/input.txt", "r", stdin);
   freopen("D:/vscode/io/output.txt", "w", stdout);
-  int arr[] = {3,4,5,5,3,6};
-  create(arr, 6);
+  int arr[] = {7, 3, 4, 5, 5, 3, 6};
+  create(arr, 7);
   // removeDuplicates(head);
-  display(removeDuplicates(head));
+  // display(removeDuplicates(head));
   // recursiveDisplay(head);
   // cout << endl
   //      << count(head);
@@ -208,6 +250,7 @@ int main()
   // display(head);
   // cout<<endl<<deleteNode(5);
   //  cout<<endl;
+  fun(head);
   // display(head);
   return 0;
 }

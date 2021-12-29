@@ -42,7 +42,9 @@ int memoization(int n)
         {
             F[n - 2] = memoization(n - 2);
         }
-        F[n] = memoization(n - 1) + memoization(n - 2);
+        cout<<F[n-1]<<" "<<memoization(n-1)<<endl;
+        // F[n] = memoization(n - 1) + memoization(n - 2);
+        F[n]=F[n - 1] + F[n - 2];
         return F[n - 1] + F[n - 2];
     }
 }
