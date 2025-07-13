@@ -69,17 +69,20 @@ void solve()
 
 int main(){
 #ifndef ONLINE_JUDGE 
-   freopen("D:/vscode/io/input.txt", "r", stdin);
-   freopen("D:/vscode/io/output.txt", "w", stdout);
+   freopen("/home/yuvraj/yuvi/DSA_and_coding/io/input.txt", "r", stdin);
+   freopen("/home/yuvraj/yuvi/DSA_and_coding/io/output.txt", "w", stdout);
 #endif
    ios_base::sync_with_stdio(false), cin.tie(NULL);
 
-    int t=1;
-   //  cin>>t;
-    while(t--){
-      solve();
+   cout<<"hillo"<< endl << "peter";
+   return 0;
 
-    }
+//     int t=1; 
+//    //  cin>>t;
+//     while(t--){
+//       solve();
 
-return 0;
+//     }
+
+// return 0;
 }

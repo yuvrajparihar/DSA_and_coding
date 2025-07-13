@@ -73,6 +73,7 @@ void iterativePre(Node *t){
         }
     }
 }
+
 void iterativeInorder(Node *t){
     stack<Node*> st;
    
@@ -91,6 +92,40 @@ void iterativeInorder(Node *t){
            st.pop();
         }
     }
+}
+
+vector<int> inorderTraversal(Node* root) {
+    // each element is visited atmost 3 times
+    // 1. for creating cycle: go to the right most element of the left node of the current node 
+    //    and point the right of right most node to the current node
+    // 2. traversing throught elements
+    // 3. for removing cycle
+    vector<int> in;
+    
+    Node *cur = root;
+
+    while (cur != NULL) {
+        if(cur -> left == NULL) {
+            in.push_back(cur->data);
+            cur=cur->right;
+        } else {
+            Node *prev=cur->left;
+            
+            while(prev->right && prev->right != cur) 
+                prev=prev->right;
+            
+            if (!prev->right) {
+                prev->right=cur;
+                cur=cur->left;
+            } else {
+                prev->right=NULL;
+                in.push_back(cur->data);
+                cur=cur->right;
+            }
+        }
+    }
+
+    return in;
 }
 
 int main()
