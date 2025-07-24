@@ -4,9 +4,9 @@ import numpy as np
 import time
 import sys 
 
-sys.stdin = open('D:/vscode/io/input.txt', 'r')   
+sys.stdin = open('/home/yuvraj/yuvi/DSA_and_coding/io/input.txt', 'r')   
   
-sys.stdout = open('D:/vscode/io/output.txt', 'w') 
+sys.stdout = open('/home/yuvraj/yuvi/DSA_and_coding/io/output.txt', 'w') 
 
 
 def bestsolution(state):

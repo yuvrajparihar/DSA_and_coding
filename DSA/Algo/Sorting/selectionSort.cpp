@@ -22,8 +22,8 @@ void selectionSort(int a[], int n)
 
 int main()
 {
-    freopen("D:/vscode/io/input.txt", "r", stdin);
-    freopen("D:/vscode/io/output.txt", "w", stdout);
+    freopen("/home/yuvraj/yuvi/DSA_and_coding/io/input.txt", "r", stdin);
+    freopen("/home/yuvraj/yuvi/DSA_and_coding/io/output.txt", "w", stdout);
 
     int a[] = {10, 5, 8, 2, 4, 1}, n = 6;
     selectionSort(a, n);

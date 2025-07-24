@@ -25,8 +25,8 @@ int euclid(int a,int b){
 }
 
 int main(){
-   freopen("D:/vscode/io/input.txt", "r", stdin);
-   freopen("D:/vscode/io/output.txt", "w", stdout);
+   freopen("/home/yuvraj/yuvi/DSA_and_coding/io/input.txt", "r", stdin);
+   freopen("/home/yuvraj/yuvi/DSA_and_coding/io/output.txt", "w", stdout);
    int a=10,b=13;
    cout<<GCD(a,b)<<endl;
    cout<<euclid(a,b);

@@ -87,15 +87,16 @@ bool isCycleDfs(int n,vector<int> adj[])
     }
     return false;
 }
+
 int main(){
 #ifndef ONLINE_JUDGE 
-   freopen("D:/vscode/io/input.txt", "r", stdin);
-   freopen("D:/vscode/io/output.txt", "w", stdout);
+   freopen("/home/yuvraj/yuvi/DSA_and_coding/io/input.txt", "r", stdin);
+   freopen("/home/yuvraj/yuvi/DSA_and_coding/io/output.txt", "w", stdout);
 #endif
    ios_base::sync_with_stdio(false), cin.tie(NULL);
 
     int t=1;
-    // cin>>t;
+    cin>>t;
     while(t--){
     int n; //no. of nodes
     int m; // no. of edges
@@ -108,7 +109,9 @@ int main(){
         adj[u].pb(v);
         adj[v].pb(u);//for undirected
     }
+      cout<<"result\n";
       cout<<bfsIsCycle(n,adj)<<endl;
+      cout<<isCycle(n, adj)<<endl;
       cout<<isCycleDfs(n,adj);
     }
 

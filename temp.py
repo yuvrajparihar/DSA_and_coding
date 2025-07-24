@@ -6,10 +6,10 @@ from collections import defaultdict as dd
 import math
 # try:
 # For getting input from input.txt file 
-sys.stdin = open('D:/vscode/io/input.txt', 'r')  
+sys.stdin = open('/home/yuvraj/yuvi/DSA_and_coding/io/input.txt', 'r')  
 
 # Printing the Output to output.txt file 
-sys.stdout = open('D:/vscode/io/output.txt', 'w')
+sys.stdout = open('/home/yuvraj/yuvi/DSA_and_coding/io/output.txt', 'w')
 
 try:
     t=int(input())

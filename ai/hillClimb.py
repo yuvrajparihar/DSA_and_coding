@@ -1,6 +1,6 @@
 import sys
-sys.stdin = open('D:/vscode/io/input.txt', 'r')
-sys.stdout = open('D:/vscode/io/output.txt', 'w')
+sys.stdin = open('/home/yuvraj/yuvi/DSA_and_coding/io/input.txt', 'r')
+sys.stdout = open('/home/yuvraj/yuvi/DSA_and_coding/io/output.txt', 'w')
 
 
 SuccList = {'A': [['B', 3], ['C', 2]], 'B': [['D', 2], ['E', 3]], 'C': [['F', 1], [

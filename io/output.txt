@@ -1,2 +1,4 @@
-hillo
-peter
+result
+1
+1
+1

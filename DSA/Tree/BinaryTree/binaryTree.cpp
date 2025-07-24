@@ -176,8 +176,8 @@ int Tree::Height(struct Node *root)
 }
 int main()
 {
-    freopen("D:/vscode/io/input.txt", "r", stdin);
-    freopen("D:/vscode/io/output.txt", "w", stdout);
+    freopen("/home/yuvraj/yuvi/DSA_and_coding/io/input.txt", "r", stdin);
+    freopen("/home/yuvraj/yuvi/DSA_and_coding/io/output.txt", "w", stdout);
     Tree t;
     t.CreateTree();
     cout << "Preorder ";
